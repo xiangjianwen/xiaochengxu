@@ -8,7 +8,7 @@
       <view class="input-wrap"><input bindinput="bindKeyInputauthor" placeholder-style="color:red" placeholder="输入姓名"/></view>
     </view>
     <view class="address">
-      <text>身份证号码</text>
+      <text>身份证号</text>
       <view class="input-wrap"><input bindinput="bindKeyInputprice" placeholder-style="color:red" placeholder="输入身份证号码"  /></view>
     </view>
   </view>
