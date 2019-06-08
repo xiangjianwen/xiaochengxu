@@ -30,7 +30,13 @@ Page({
     
   },
   bindKeyInputprice: function (e) {
-   
+       wx.cloud.callFunction({
+      name: 'seachCardid',
+    }).then((res) => {
+      if (res.result.data.length) {
+          console.log(res)
+      }
+    })
     this.setData({
       price: e.detail
     })
