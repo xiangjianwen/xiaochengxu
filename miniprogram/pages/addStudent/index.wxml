@@ -1,0 +1,30 @@
+
+<van-cell-group>
+  <van-field
+    
+    required
+    clearable
+    label="姓名"
+    icon="question-o"
+    placeholder="请输入姓名"
+    bind:click-icon="onClickIcon"
+    bindinput="bindKeyInputauthor" 
+    
+  />
+
+  <van-field
+    
+    type="password"
+    label="身份证号码"
+    placeholder="请输入身份证号码"
+    required
+    border="{{ false }}"
+    bindinput="bindKeyInputprice" 
+  />
+
+</van-cell-group>
+<view>
+<button type="primary" bindtap="submitInfo">
+    保存
+  </button>
+  </view>

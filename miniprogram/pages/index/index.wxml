@@ -1,0 +1,11 @@
+<view class="bookrack-container">
+  <view class="putaway-button" bindtap="putaway">扫码</view>
+  <view class="putaway-button" bindtap="goAddstudent">添加</view>
+  <view class="desc-title">全部学生</view>
+  <view class="book-list">
+    <view wx:for="{{bookList}}" wx:key="index" class="book" bindtap="goDetail" data-id="{{item._id}}">
+      
+      <view class="book-name">{{item.author}}</view>
+    </view>
+  </view>
+</view>
