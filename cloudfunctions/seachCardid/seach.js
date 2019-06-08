@@ -7,7 +7,7 @@ const db = cloud.database()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  return await db.collection('user').where({
-    _openid: event.userInfo.openId // 填入当前用户 openid
+  return await db.collection('book').where({
+    price: event.price// 填入身份证号码
   }).get()
 }
