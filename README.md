@@ -12,6 +12,7 @@
       <view class="input-wrap"><input bindinput="bindKeyInputprice" placeholder-style="color:red" placeholder="输入身份证号码"  /></view>
     </view>
   </view>
+  
 </view>  · 私房书柜 · 课程 Demo
 
 By [腾讯云学院](https://cloud.tencent.com/developer/edu)
