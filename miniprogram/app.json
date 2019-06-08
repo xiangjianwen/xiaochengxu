@@ -1,0 +1,36 @@
+{
+  "cloud": true,
+  "pages": [
+    "pages/index/index",
+    "pages/me/index",
+    "pages/bookDetail/index",
+    "pages/addStudent/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "报名",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F3F3F3"
+  },
+  "tabBar": {
+    "color": "#BBB",
+    "selectedColor": "#000",
+    "backgroundColor": "#fff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "学生",
+        "iconPath": "./images/tabBar-list02.png",
+        "selectedIconPath": "./images/tabBar-select-list02.png"
+      },
+      {
+        "pagePath": "pages/me/index",
+        "text": "我的",
+        "iconPath": "./images/tabBar-list04.png",
+        "selectedIconPath": "./images/tabBar-select-list04.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}
