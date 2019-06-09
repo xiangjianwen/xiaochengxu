@@ -11,7 +11,11 @@ Page({
     publisher: '',
     title: '',
     summary: '',
-    price: ''
+    price: "",
+    error: '',
+    flag:false,
+    save:"保存",
+    btDisabled:false
 
   },
 
@@ -23,41 +27,73 @@ Page({
 
   },
   bindKeyInputauthor: function (e) {
+    
       this.setData({
-      author: e.detail
+        author: e.detail.detail.value
       
     })
     
   },
+ 
   bindKeyInputprice: function (e) {
-       wx.cloud.callFunction({
-      name: 'seachCardid',
-    }).then((res) => {
-      if (res.result.data.length) {
-          console.log(res)
-      }
-    })
+    console.log(e.detail.detail.value)
+    console.log(this.data)
     this.setData({
-      price: e.detail
+      price: e.detail.detail.value
     })
+    //this.check(this.data)//检查身份证号码是否云端已经存在
   },
   submitInfo:function(e) {
-    let that = this
-    
-      let { author, pubdate, image, publisher, title, summary, price } = this.data
-      const db = wx.cloud.database()
-      db.collection('book').add({
-        data: { author, pubdate, image, publisher, title, summary, price }
-      }).then(() => {
-        //that.getBookList()
+    this.setData({
+    save:"正在保存...",
+    btDisabled:true
+    })
+    wx.cloud.callFunction({
+      name: 'seachCardid',
+      data: this.data,
+    }).then((res) => {
+      if (res.result.data.length) {
+        console.log(res)
+        this.setData({
+          error: "该身份证号码已经存在！" + res.result.data[0].author,
+          flag: false,
+          save:"保存",
+          btDisabled:false
+        })
+      } else { 
+        this.setData({
+          flag: true
+        })
+      }
+      if (this.data.flag) {
+        let { author, pubdate, image, publisher, title, summary, price } = this.data
+        const db = wx.cloud.database()
+        db.collection('book').add({
+          data: { author, pubdate, image, publisher, title, summary, price }
+        }).then(() => {
+          this.setData({
+            
+            save: "保存",
+            btDisabled: false
+          })
+          //that.getBookList()
+          wx.showToast({
+            title: "添加成功"
+          })
+          wx.navigateBack({
+            delta: 1
+          })
+        })
+      } else {
         wx.showToast({
-          title: "添加成功"
+          title: "添加失败"
         })
-        wx.navigateBack({
-          delta:1
-        })
-      })
+      }
+      
+    })
     
+    
+
   },
   
   /**
@@ -103,7 +139,7 @@ Page({
   },
 
   /**
-   * 用户
+   * 用户点击右上角分享
    */
   onShareAppMessage: function () {
 

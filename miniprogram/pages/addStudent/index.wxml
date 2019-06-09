@@ -8,23 +8,24 @@
     icon="question-o"
     placeholder="请输入姓名"
     bind:click-icon="onClickIcon"
-    bindinput="bindKeyInputauthor" 
+    bindblur="bindKeyInputauthor" 
     
   />
 
   <van-field
     
-    type="password"
+    
     label="身份证号码"
     placeholder="请输入身份证号码"
     required
     border="{{ false }}"
-    bindinput="bindKeyInputprice" 
+    bindblur="bindKeyInputprice" 
+    error-message="{{error}}"
   />
 
 </van-cell-group>
 <view>
-<button type="primary" bindtap="submitInfo">
-    保存
+<button type="primary" bindtap="submitInfo" disabled='{{btDisabled}}'>
+   {{save}}
   </button>
   </view>
